@@ -51,6 +51,12 @@ class VK {
             alert(`Ошибка ${e.name} : ${e.message}`);
         }
         
+        if (!result || !result.response|| !Array.isArray(result.response.items)) {
+            alert('Ошибка получения данных');
+            console.error('Ошибка получения данных:', result);            
+            return [];
+        }
+
         for (const item of result.response.items) {
             let siz = {};
             for (const [id, size] of item.sizes.entries()) {
